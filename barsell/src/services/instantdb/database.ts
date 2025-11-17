@@ -1,5 +1,14 @@
 import { getInstantDB } from "./config"
-import { id } from "@instantdb/admin"
+
+// Dynamic import for id function
+function getId() {
+  try {
+    const instantdb = require("@instantdb/admin")
+    return instantdb.id
+  } catch (error) {
+    throw new Error("InstantDB package not installed. Please install @instantdb/admin")
+  }
+}
 
 /**
  * Database operations using InstantDB
@@ -20,6 +29,7 @@ export async function createDocument<T extends Record<string, any>>(
   data: T
 ): Promise<T & { id: string }> {
   const db = getInstantDB()
+  const id = getId()
   const documentId = id()
 
   await db.transact([

@@ -1,6 +1,15 @@
 import { getInstantDB } from "./config"
-import { id } from "@instantdb/admin"
 import { MedusaError } from "@medusajs/framework/utils"
+
+// Dynamic import for id function
+function getId() {
+  try {
+    const instantdb = require("@instantdb/admin")
+    return instantdb.id
+  } catch (error) {
+    throw new Error("InstantDB package not installed. Please install @instantdb/admin")
+  }
+}
 
 export interface UploadFileOptions {
   path: string
@@ -82,6 +91,7 @@ export async function uploadFilePrivate(
 ): Promise<UploadResult> {
   try {
     const db = getInstantDB()
+    const id = getId()
     const fileId = id()
     
     // Store file metadata with private flag
