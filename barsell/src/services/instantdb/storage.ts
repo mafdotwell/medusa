@@ -41,6 +41,7 @@ export async function uploadFile(
     
     // For now, we'll store file metadata in the database
     // and assume files are stored via InstantDB's storage service
+    const id = getId()
     const fileId = id()
     
     // Convert buffer to base64 for storage (or use InstantDB's file upload API)
