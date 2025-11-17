@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "env": {
+    "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY": "@medusa_publishable_key",
+    "MEDUSA_BACKEND_URL": "@medusa_backend_url",
+    "NEXT_PUBLIC_INSTANTDB_APP_ID": "@instantdb_app_id",
+    "NEXT_PUBLIC_DEFAULT_REGION": "us"
+  }
+}
+
